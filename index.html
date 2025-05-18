@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Scheme!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <link rel="icon" href="https://cdn.drawception.com/images/panels/2012/3-30/aKN7skjXcp-2.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #213e5a;
+            color:white;
+        }
+        header{
+            background-color: #171a21;
+            color:white;
+            padding: 20px;
+        }
+        nav {
+            background-color:#214485;
+            padding: 1em;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 20px;
+            font-size: 1.2em;
+        }
+        nav a:hover {
+            background-color: #31a7eb;
+            text-decoration: underline;
+        }
+        .container {
+            padding: 2em;
+        }
+        .cart-item {
+            margin-bottom: 1em;
+        }
+        .product {
+            color: white;
+            display: inline-block;
+            margin: 1em;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 1em;
+            border-radius: 8px;
+            width: 230px;
+            background-color: #214485;
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .product button {
+            margin-top: 0.5em;
+            padding: 0.5em;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .product button:hover {
+            background-color: #218838;
+        }
+        .product p{
+            background-color: #213e5a;
+            color:#28a745;
+        }
+        #cart-items {
+            margin-top: 1em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Scheme</h1>
+    <nav>
+        <a href="index.html">Your Store</a>
+        <a href="YourCart.html">Your Shopping Cart</a>
+    </nav>
+    </header>
+
+    <div class="container" id="home">
+        <h3>Featured and Recommended</h3>
+        <div class="products">
+            <div class="product">
+                <img src="Images/TGYH.png" alt="British Simulator">
+                <h3 class="badge text-wrap" style="width: 190px;">Thank Goodness You're Here!</h3>
+                <p>Price: 625.00 PHP</p>
+                <button id="btn01" onclick="addToCart('Thank Goodness Youre Here', 625), disableElement1()" >Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="Images/TINGWD.png" alt="Be an annoyance">
+                <h3 class="badge text-wrap" style="width: 150px;">There Is No Game: WD</h3>
+                <p>Price: 370.00 PHP</p>
+                <button id="btn02" onclick="addToCart('There Is No Game Wrong Dimension', 370), disableElement2()">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="Images/NSR.png" alt="Are we lost">
+                <h3 class="badge text-wrap" style="width: 150px;">No Straight Roads</h3>
+                <p>Price: 1,400.00 PHP</p>
+                <button id="btn03" onclick="addToCart('No Straight Roads', 1400), disableElement3()">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="Images/ITT.png" alt="Get Divorced">
+                <h3 class="badge text-wrap" style="width: 150px;">It Takes Two</h3>
+                <p>Price: 1,800.00 PHP</p>
+                <button id="btn04" onclick="addToCart('It Takes Two', 1800), disableElement4()">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function addToCart(prod_name, prod_price) {
+            const existingItem = cartItems.find(item => item.prod_name === prod_name);
+            document.getElementById
+            if (existingItem) {
+                alert(`${prod_name} has already been added to your cart.`);
+            } else {
+                cartItems.push({ prod_name, prod_price, quantity: 1 });
+                alert(`${prod_name} has been added to your cart.`);
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+            }
+
+            
+        }
+        function disableElement1() {
+            document.getElementById("btn01").disabled = true;
+            document.getElementById("btn01").innerHTML='Already added';
+            document.getElementById("btn01").style.filter="grayscale(100%)";
+        }
+        function disableElement2() {
+            document.getElementById("btn02").disabled = true;
+            document.getElementById("btn02").innerHTML='Already added';
+            document.getElementById("btn02").style.filter="grayscale(100%)";
+        }
+        function disableElement3() {
+            document.getElementById("btn03").disabled = true;
+            document.getElementById("btn03").innerHTML='Already added';
+            document.getElementById("btn03").style.filter="grayscale(100%)";
+        }
+        function disableElement4() {
+            document.getElementById("btn04").disabled = true;
+            document.getElementById("btn04").innerHTML='Already added';
+            document.getElementById("btn04").style.filter="grayscale(100%)";
+        }
+    </script>
+</body>
+</html>
